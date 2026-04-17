@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  netmon:
+    build: .
+    container_name: netmon
+    volumes:
+      - .:/app
+    environment:
+      - TZ=Europe/Berlin
+    restart: always

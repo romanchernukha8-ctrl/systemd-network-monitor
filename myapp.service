@@ -1,0 +1,15 @@
+[Unit]
+Description=My Network Checker
+After=network.target
+
+[Service]
+User=user
+WorkingDirectory=/home/user/network-monitor
+ExecStart=/usr/bin/python3 /home/user/network-monitor/app.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
