@@ -1,18 +1,18 @@
-# Базовый образ
+# Base image
 FROM python:3.12-slim
 
-# Рабочая директория
+# Set working directory
 WORKDIR /app
 
-# Копируем файлы
+# Copy application files
 COPY app.py .
 COPY config.json .
 
-# Устанавливаем tzdata (system)
+# Install system dependencies (timezone support)
 RUN apt-get update && apt-get install -y tzdata && rm -rf /var/lib/apt/lists/*
 
-# Устанавливаем зависимости
+# Install Python dependencies
 RUN pip install --no-cache-dir requests
 
-# Запуск
+# Run application
 CMD ["python", "app.py"]
